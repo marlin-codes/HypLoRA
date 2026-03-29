@@ -1,0 +1,38 @@
+# HyperLoRA Project Requirements
+# Tested with Python 3.12.3
+# NOTE: PyTorch should be installed separately based on your hardware
+# See SETUP.md for installation instructions
+
+# Core ML frameworks (PyTorch installed separately)
+transformers==4.50.0
+accelerate==1.10.1
+safetensors==0.6.2
+
+# PEFT (custom version with HyperLoRA/Stereographic extensions)
+# Install from local modified version: pip install -e ./peft/
+# peft==0.15.2.dev0
+
+# Datasets and evaluation
+datasets==4.2.0
+huggingface-hub==0.35.3
+tokenizers==0.21.4
+
+# Quantization (GPU-specific, optional for CPU-only dev)
+# bitsandbytes==0.48.1
+
+# Utilities
+numpy==1.26.4
+pandas==2.2.3
+scipy==1.15.3
+tqdm==4.67.1
+fire==0.7.1
+
+# Logging
+wandb==0.22.2
+
+# Serialization
+protobuf==4.25.8
+
+# Optional: Visualization (for analysis scripts)
+# matplotlib
+# powerlaw
