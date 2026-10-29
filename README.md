@@ -70,6 +70,7 @@ The environment name is `hyplora`. Activate it before running training or evalua
 
 We provide `finetune.sh` and `eval.sh` scripts for **HypLoRA** and **LoRA** on the following model families:
 
+- Gemma-7B
 - Llama 3-8B
 - Gemma 3-4B
 - Qwen 2.5-7B
@@ -111,7 +112,7 @@ bash finetune.sh
 bash eval.sh
 ```
 
-The same structure applies to Gemma 3-4B and Qwen 2.5-7B.
+The same structure applies to Gemma-7B, Gemma 3-4B and Qwen 2.5-7B.
 
 The Table 3 evaluation scripts cover AQuA, MAWPS, SVAMP, and GSM8K.
 
@@ -152,6 +153,7 @@ We provide pretrained HypLoRA adapter checkpoints for Math-10K and Commonsense-1
 
 | Base model | Hugging Face checkpoint |
 |---|---|
+| Gemma-7B   | [GGLabYale/hyplora-gemma-7b-math10k](https://huggingface.co/GGLabYale/hyplora-gemma-7b-math10k)
 | Llama 3-8B | [GGLabYale/hyplora-llama3-8b-math10k](https://huggingface.co/GGLabYale/hyplora-llama3-8b-math10k) |
 | Gemma 3-4B | [GGLabYale/hyplora-gemma3-4b-math10k](https://huggingface.co/GGLabYale/hyplora-gemma3-4b-math10k) |
 | Qwen 2.5-7B | [GGLabYale/hyplora-qwen25-7b-math10k](https://huggingface.co/GGLabYale/hyplora-qwen25-7b-math10k) |
