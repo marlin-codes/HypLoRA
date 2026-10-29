@@ -28,6 +28,7 @@ SUPPORTED_MODELS = {
     "Meta-Llama-3-8B-Instruct",
     "Qwen2.5-7B-Instruct-1M",
     "gemma-3-4b-it",
+    "gemma-7b",
 }
 
 
@@ -67,7 +68,7 @@ def main(base_model: str = "", lora_weights: str = "tloen/alpaca-lora-7b"):
             eos_token_id=tokenizer.eos_token_id,
         )
 
-        if args.model == "Meta-Llama-3-8B-Instruct":
+        if args.model in {"Meta-Llama-3-8B-Instruct", "gemma-7b"}:
             common["bos_token_id"] = tokenizer.bos_token_id
 
         elif args.model == "gemma-3-4b-it":
@@ -119,7 +120,7 @@ def main(base_model: str = "", lora_weights: str = "tloen/alpaca-lora-7b"):
         inputs = tokenizer(
             formatted_prompt,
             return_tensors="pt",
-            add_special_tokens=False,
+            add_special_tokens=(args.model == "gemma-7b"),
         ).to(device)
 
         generation_config = build_generation_config(
@@ -170,7 +171,7 @@ def main(base_model: str = "", lora_weights: str = "tloen/alpaca-lora-7b"):
             formatted_prompts,
             return_tensors="pt",
             padding=True,
-            add_special_tokens=False,
+            add_special_tokens=(args.model == "gemma-7b"),
         ).to(device)
 
         generation_config = build_generation_config(
@@ -367,6 +368,25 @@ def generate_prompt(
             f"{user_message}<|im_end|>\n"
             f"<|im_start|>assistant\n"
         )
+        
+    elif llm_base == "gemma-7b":
+
+        if input_text:
+            return (
+                "Below is an instruction that describes a task, paired "
+                "with an input that provides further context. "
+                "Write a response that appropriately completes the request.\n\n"
+                f"### Instruction:\n{instruction.strip()}\n\n"
+                f"### Input:\n{input_text.strip()}\n\n"
+                "### Response:\n"
+            )
+
+        return (
+            "Below is an instruction that describes a task. "
+            "Write a response that appropriately completes the request.\n\n"
+            f"### Instruction:\n{instruction.strip()}\n\n"
+            "### Response:\n"
+        )
 
     elif llm_base == "gemma-3-4b-it":
         messages = [
@@ -457,6 +477,7 @@ def parse_args():
             "Meta-Llama-3-8B-Instruct",
             "Qwen2.5-7B-Instruct-1M",
             "gemma-3-4b-it",
+            "gemma-7b",
         ],
         required=True,
     )
@@ -504,6 +525,8 @@ def load_model(args):
     )
 
     if args.model == "Meta-Llama-3-8B-Instruct":
+        tokenizer.pad_token = tokenizer.eos_token
+    elif args.model == "gemma-7b" and tokenizer.pad_token_id is None:
         tokenizer.pad_token = tokenizer.eos_token
 
     if args.batch_size > 1:
