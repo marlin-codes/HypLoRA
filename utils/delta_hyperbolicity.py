@@ -20,6 +20,13 @@ from transformers import AutoModelForCausalLM, AutoTokenizer
 import matplotlib.pyplot as plt
 
 
+# BEGIN MIT-LICENSED BLOCK: delta_hyp and get_delta (including local adaptations).
+# Derived from hyptorch/delta.py in leymir/hyperbolic-image-embeddings,
+# revision 6633edbbeffd6d90271f0963852a046c64f407d6.
+# Copyright (c) 2019 Valentin Khrulkov.
+# See ../LICENSES/MIT-Hyperbolic-Image-Embeddings.txt for the full MIT license.
+# These functions are excluded from the root research-use restriction.
+# Local adaptation: get_delta accepts token embeddings and configurable sampling.
 def delta_hyp(dismat):
     """
     Compute the Gromov delta-hyperbolicity of a distance matrix.
@@ -49,6 +56,7 @@ def get_delta(output_features, max_points=1500):
     delta = delta_hyp(dists)
     diam = np.max(dists)
     return delta, diam
+# END MIT-LICENSED BLOCK. Original code below is subject to ../LICENSE.
 
 
 def plot_delta_distribution(delta_ratios, output_folder, dataset_name):

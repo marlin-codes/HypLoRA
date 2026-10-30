@@ -3,6 +3,26 @@
 
 PyTorch Implementation for [Hyperbolic Fine-tuning for LLMs](https://arxiv.org/abs/2410.04010).
 
+### License
+
+Original HypLoRA material identified in [LICENSE](LICENSE) is free to use, modify
+and share for scientific research, evaluation and reproducibility. Company-internal
+research and evaluation without external services or production deployment is also
+free. Commercial use of that covered original material requires separate written
+permission from [marlin-codes](https://github.com/marlin-codes), unless an existing
+license already permits the use. This is a source-available research-use license,
+not an open-source license.
+
+Third-party and previously licensed material retains its existing terms. All of
+`peft/`, including the already published HypLoRA changes there, is excluded from
+the new restriction. The marked MIT-derived `delta_hyp` and `get_delta` functions
+in the two delta utilities also retain MIT permission, including commercial use.
+For mixed-origin training/evaluation scripts, only original project contributions
+are covered; upstream portions remain under their applicable licenses. See
+[THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md) and [LICENSES/](LICENSES/).
+Data, figures, models, weights, checkpoints and independent outputs are outside
+this code license and require separate consideration of their applicable terms.
+
 
 ### 1.Introduction
 Large language models (LLMs) have demonstrated remarkable performance across various tasks. However, it remains an open question whether the default Euclidean space is the most suitable choice for LLMs. In this study, we investigate the geometric characteristics of LLMs, focusing specifically on tokens and their embeddings. Our findings reveal that token frequency follows a power-law distribution, where high-frequency tokens (e.g., the, that ) constitute the minority, while low-frequency tokens (e.g., apple, dog) constitute the majority. Furthermore, high-frequency tokens cluster near the origin, whereas low-frequency tokens are positioned farther away in the embedding space. Additionally, token embeddings exhibit hyperbolic characteristics, indicating a latent tree-like structure within the embedding space. Motivated by these observations, we propose HypLoRA, an efficient fine-tuning approach that operates in hyperbolic space to exploit these underlying hierarchical structures better. HypLoRA performs low-rank adaptation directly in hyperbolic space, thereby preserving hyperbolic modeling capabilities throughout the fine-tuning process. Extensive experiments across various base models and reasoning benchmarks, specifically arithmetic and commonsense reasoning tasks, demonstrate that HypLoRA substantially improves LLM performance.

@@ -1,0 +1,95 @@
+HypLoRA Research Use License, version 1.0
+
+Licensor: the individual using the public alias marlin-codes, solely for
+original project material that this individual owns or is authorized to license.
+
+1. Scope
+
+This license applies only to original HypLoRA source code, configuration and
+documentation in the following paths in the version distributed with this file
+(the "Covered Material"), subject to all exclusions below:
+
+  README.md, setup.sh, requirements.txt
+  finetune_gemma.py, finetune_gemma7b.py, finetune_llama3.py, finetune_qwen.py
+  evaluate.py, commonsense_evaluate.py, commonsense_evaluate_gemma.py,
+    commonsense_evaluate_qwen.py
+  scripts/table3/**/*.sh, scripts/table4/**/*.sh
+  utils/group_norm_value.py, utils/token_frequency_distribution.py,
+    utils/token_norm_plot.py
+  utils/delta_hyperbolicity.py, utils/run_delta_all.py
+  dataset/mawps/data_process.py
+
+The path list identifies where original material is licensed; it does not claim
+ownership of every part of those files. Third-party code, copied or adapted
+upstream portions, and material already licensed on other terms are excluded.
+In particular:
+
+  - All of peft/ is excluded, including the existing HypLoRA modifications
+    published there with permissive notices. Its Apache-2.0, MIT and other
+    applicable upstream terms remain intact.
+  - The entire delta_hyp and get_delta functions in both delta utility files
+    listed above are excluded and remain under MIT; see the marked source
+    blocks and LICENSES/MIT-Hyperbolic-Image-Embeddings.txt.
+  - Alpaca-LoRA/LLM-Adapters-derived portions of training and evaluation scripts
+    retain their applicable upstream terms; only original project contributions
+    outside those portions are Covered Material.
+  - Datasets, training-data files, figures, model weights, tokenizers,
+    adapters/checkpoints, and generated outputs are not licensed by this file.
+    The explicitly listed data_process.py is code, not a grant to its input data.
+
+See THIRD_PARTY_NOTICES.md and the texts in LICENSES/ for identified upstream
+material. These exclusions also apply to third-party material not yet listed
+there. No new restriction applies to exercising rights under a prior valid
+license, including its commercial permissions. Those grants cannot be revoked
+retroactively by this file, a changed header, or relocation of code. For mixed
+files, these terms never replace the upstream terms for upstream material.
+
+2. Free research permission
+
+The licensor grants a worldwide, non-exclusive, no-charge copyright license to
+use, reproduce, modify and distribute the Covered Material for scientific and
+academic research, evaluation and reproducibility. This includes sharing code
+and modifications for those purposes and publishing research findings.
+
+Company-internal research and evaluation is also free when it does not provide
+external services or customer operational deliverables and is not production
+deployment. This includes evaluating potential future commercial use. Company
+affiliation, salary or research funding alone does not make such research a
+commercial use. There is no requirement to publish findings or modifications.
+
+When redistributing Covered Material, retain applicable copyright and attribution
+notices and include this license and the applicable third-party notices/license
+texts. Recipients receive the same permission for the Covered Material under
+these terms; redistribution does not expand that permission to commercial use.
+
+3. Commercial use
+
+Commercial use of Covered Material requires separate written permission from
+marlin-codes, unless another applicable license or permission already allows it.
+Commercial use includes production deployment for business operations (including
+internal operational deployment), incorporation into a product delivered for
+customer operational use, and provision of commercial or customer-facing
+services using Covered Material. The research activities in section 2 remain
+free. Research sharing under section 2 is not customer operational delivery.
+
+Contact the maintainer through https://github.com/marlin-codes to discuss a
+commercial agreement. This license specifies no price or automatic payment
+obligation and does not grant rights on behalf of third-party rights holders.
+
+4. Separate assets and existing rights
+
+Permission to use code is not permission to use or redistribute its datasets,
+models or other separately licensed inputs. Independent outputs do not become
+subject to this license merely because they were produced using the code;
+protected code or third-party content reproduced in an output retains its own
+applicable terms. Existing upstream patent grants, disclaimers and other license
+provisions are unaffected.
+
+5. Disclaimer
+
+To the extent permitted by applicable law, the Covered Material is provided
+"AS IS", without warranties or conditions of any kind, express or implied,
+including merchantability, fitness for a particular purpose and noninfringement.
+The licensor is not liable for damages arising from use of the Covered Material
+to the extent such liability may lawfully be excluded. This disclaimer does not
+replace the terms applicable to third-party material.
